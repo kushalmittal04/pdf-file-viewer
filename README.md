@@ -46,10 +46,6 @@ A professional web application for managing PDF and other file types with:
 git clone https://github.com/kushalmittal04/pdf-file-viewer
 cd pdf-file-viewer
 
-# Set up virtual environment (for Windows):
-python -m venv venv
-venv\Scripts\activate
-
 #Install dependencies
 pip install -r requirements.txt
 
