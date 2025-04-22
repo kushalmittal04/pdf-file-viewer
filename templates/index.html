@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="hero">
+        <h2>Welcome to File Manager</h2>
+        <p>A simple web application to manage and view your files</p>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <i class="fas fa-file-pdf"></i>
+            <h3>Upload PDF</h3>
+            <p>Securely upload and store your PDF documents</p>
+            <a href="{{ url_for('upload_pdf') }}" target="_blank" class="btn">Go to PDF Upload</a>
+        </div>
+
+        <div class="feature-card">
+            <i class="fas fa-file-upload"></i>
+            <h3>View Files</h3>
+            <p>Upload and view various file types directly in your browser</p>
+            <a href="{{ url_for('view_file') }}" target="_blank" class="btn">Go to File Viewer</a>
+        </div>
+
+        <div class="feature-card">
+            <i class="fas fa-folder-open"></i>
+            <h3>Browse Files</h3>
+            <p>View all uploaded files and access them easily</p>
+            <a href="{{ url_for('browse_files') }}" target="_blank" class="btn">Go to File Browser</a>
+        </div>
+    </section>
+{% endblock %}

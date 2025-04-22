@@ -1,0 +1,58 @@
+/* Light Theme (Default) */
+:root {
+    --primary: #4361ee;
+    --primary-dark: #3a56d4;
+    --header-bg: #4361ee;
+    --header-text: #ffffff;
+    --nav-bg: #f8f9fa;
+    --nav-text: #2b2d42;
+    --nav-hover: #e9ecef;
+    --card-bg: #ffffff;
+    --input-bg: #ffffff;
+    --preview-bg: #f8f9fa;
+    --code-bg: #f1f3f5;
+    --table-header: #f1f3f5;
+    --table-hover: #f8f9fa;
+    --text-primary: #2b2d42;
+    --text-secondary: #6c757d;
+    --border: #dee2e6;
+    --flash-bg: #d4edda;
+    --flash-text: #155724;
+    --footer-bg: #2b2d42;
+    --footer-text: #ffffff;
+    --button-hover: rgba(255, 255, 255, 0.2);
+    --bg-color: #f8f9fa;
+}
+
+/* Dark Theme - Modern Professional */
+.dark-theme {
+    --primary: #5e72e4;
+    --primary-dark: #4e62c4;
+    --header-bg: #1a1b26;
+    --header-text: #e0e0e0;
+    --nav-bg: #24283b;
+    --nav-text: #a9b1d6;
+    --nav-hover: #414868;
+    --card-bg: #1a1b26;
+    --input-bg: #24283b;
+    --preview-bg: #24283b;
+    --code-bg: #16161e;
+    --table-header: #16161e;
+    --table-hover: #2a2c3a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #7aa2f7;
+    --border: #3b3b4d;
+    --flash-bg: #1e3a1e;
+    --flash-text: #9ece6a;
+    --footer-bg: #16161e;
+    --footer-text: #a9b1d6;
+    --button-hover: rgba(94, 114, 228, 0.2);
+    --bg-color: #16161e;
+}
+
+
+
+/* Additional dark theme body background */
+.dark-theme body {
+    background-color: var(--bg-color);
+}

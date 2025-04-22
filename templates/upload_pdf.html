@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="upload-section">
+        <h2><i class="fas fa-file-pdf"></i> PDF Upload</h2>
+        <p>Upload your PDF files here. They will be stored securely.</p>
+
+        <form method="POST" enctype="multipart/form-data" class="upload-form">
+            <div class="form-group">
+                <label for="file">Select PDF File:</label>
+                <input type="file" name="file" id="file" accept=".pdf" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Upload PDF</button>
+        </form>
+    </section>
+{% endblock %}

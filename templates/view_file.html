@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="view-section">
+        <h2><i class="fas fa-file-upload"></i> File Upload & Viewer</h2>
+        <p>Upload a file to view it directly in your browser or view existing files.</p>
+
+        <div class="view-options">
+            <div class="upload-option">
+                <h3>Upload and View</h3>
+                <form method="POST" enctype="multipart/form-data" class="upload-form">
+                    <input type="hidden" name="action" value="upload">
+                    <div class="form-group">
+                        <label for="file">Select File:</label>
+                        <input type="file" name="file" id="file" accept=".pdf,.txt,.png,.jpg,.jpeg,.gif,.doc,.docx" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-upload"></i> Upload and View
+                    </button>
+                </form>
+            </div>
+
+            <div class="view-option">
+                <h3>View Existing File</h3>
+                <form method="POST" class="view-form">
+                    <input type="hidden" name="action" value="view">
+                    <div class="form-group">
+                        <label for="existing-file">Select from Uploaded Files:</label>
+                        <select name="existing-file" id="existing-file" class="form-control" required>
+                            <option value="">-- Select a file --</option>
+                            {% for file in existing_files %}
+                                <option value="{{ file }}">{{ file }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-secondary">
+                        <i class="fas fa-eye"></i> View Only
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        {% if file_type == 'image' %}
+            <div class="file-preview">
+                <h3>Image Preview</h3>
+                <img src="{{ url_for('uploaded_file', filename=filename) }}" alt="Uploaded Image">
+            </div>
+        {% elif file_type == 'pdf' %}
+            <div class="file-preview">
+                <h3>PDF Preview</h3>
+                <embed src="{{ url_for('uploaded_file', filename=filename) }}" type="application/pdf" width="100%" height="600px">
+            </div>
+        {% elif file_type == 'text' %}
+            <div class="file-preview">
+                <h3>Text Content</h3>
+                <pre>{{ content }}</pre>
+            </div>
+        {% elif file_type == 'download' %}
+            <div class="file-preview">
+                <h3>File Ready</h3>
+                <p>This file type cannot be previewed directly.</p>
+                <a href="{{ url_for('uploaded_file', filename=filename) }}" class="btn" download>
+                    <i class="fas fa-download"></i> Download File
+                </a>
+            </div>
+        {% endif %}
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

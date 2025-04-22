@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="browse-section">
+        <h2><i class="fas fa-folder-open"></i> Browse Uploaded Files</h2>
+        <p>All files in the upload folder are listed below.</p>
+
+        {% if files %}
+            <div class="file-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>File Name</th>
+                            <th>Uploaded At</th>
+                            <th>Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for file in files %}
+                            <tr>
+                                <td>
+                                    {% if file.startswith('pdf_') %}
+                                        {{ file.split('_', 2)[2] }}
+                                    {% elif file.startswith('file_') %}
+                                        {{ file.split('_', 2)[2] }}
+                                    {% else %}
+                                        {{ file }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if file.startswith('pdf_') or file.startswith('file_') %}
+                                        {{ file.split('_')[1]|replace('2023', '2023-')|replace('2024', '2024-')|replace('01', '01-')|replace('02', '02-')|replace('03', '03-')|replace('04', '04-')|replace('05', '05-')|replace('06', '06-')|replace('07', '07-')|replace('08', '08-')|replace('09', '09-')|replace('10', '10-')|replace('11', '11-')|replace('12', '12-') }}
+                                    {% else %}
+                                        Unknown
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if file.startswith('pdf_') %}
+                                        PDF
+                                    {% elif file.startswith('file_') %}
+                                        {{ file.split('.')[-1]|upper }}
+                                    {% else %}
+                                        Unknown
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{{ url_for('uploaded_file', filename=file) }}" class="btn btn-sm">View</a>
+                                    <a href="{{ url_for('uploaded_file', filename=file) }}" class="btn btn-sm" download>Download</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="no-files">
+                <p>No files have been uploaded yet.</p>
+            </div>
+        {% endif %}
+    </section>
+{% endblock %}
